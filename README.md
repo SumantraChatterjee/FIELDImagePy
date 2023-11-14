@@ -17,6 +17,8 @@ FIELDimagePy is a computer program designed to extract information from a raster
 
 [Step 2](#s1)
 
+[Contact](#cont)
+
 ---------------------------------------------
 
 <div id="s1" />
@@ -28,6 +30,12 @@ FIELDimagePy is a computer program designed to extract information from a raster
 <p align="center">
   <img src="https://raw.githubusercontent.com/filipematias23/images/master/readme/Step2_PY.jpg">
 </p>
+
+<br />
+
+[Menu](#menu)
+
+<br />
 
 ---------------------------------------------
 
@@ -80,10 +88,35 @@ Step 9: The next step is extracting zonal statistics from vegetation index. The 
 Figure 5. Geopandas geodatabase final database. The header “Count_SHP” represents total number of pixels within each polygons, “NDVI_count” represents the number of pixels with NDVI values after excluding the soil exposed areas. Thus, the ratio between NDVI_count to Count_SHP represents canopy coverage. As seen for NDVI, RENDVI, “mean” represents mean of the vegetation indices, and “median” represents median of the vegetation indices.
 
 Step 10: Once all the above steps have been completed, all the zonal statistics for all the vegetation indices can be assembled together into one geodatabase using the following steps:
- 
+
 
 Step 11: The final geodatabase can be exported as CSV file as follows:
  
  
 Figure 6. Example of the final exported CSV file
+
+
+<div id="cont" />
+
+<br />
+
+### Author
+
+> * [Sumantra Chatterjee](https://www.linkedin.com/in/sumantra-chatterjee-01a3154b/)
+> * [Seth Murray](https://soilcrop.tamu.edu/people/murray-seth-c/)
+
+<br />
+
+### Acknowledgments
+
+> * [Corn Breeding and Genetics TAMU](https://soilcrop.tamu.edu/people/murray-seth-c/)
+> * []()
+> * []()
+
+<br />
+
+[Menu](#menu)
+
+<br />
+ 
 
