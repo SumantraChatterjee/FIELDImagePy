@@ -45,8 +45,9 @@ FIELDimagePy is a computer program designed to extract information from a raster
 
 > Once all the aforementioned libraries have been installed, the following libraries and the associated packages needs to be installed. 
 
+## Step 3: 
 
-Step 3: Often images are acquired over a larger area than required. If the processes continued with the original images that would increase the computing times unnecessarily. Thus, the images are suggested to be clipped using an area of study. This area of study can be an outermost boundary of the multi-polygon shapefile defining the plots, or a separate shapefile of one polygon defining the region of interest. To implement this step – 
+> Often images are acquired over a larger area than required. If the processes continued with the original images that would increase the computing times unnecessarily. Thus, the images are suggested to be clipped using an area of study. This area of study can be an outermost boundary of the multi-polygon shapefile defining the plots, or a separate shapefile of one polygon defining the region of interest. To implement this step – 
 The shapefile of importance is imported as:
  
  
