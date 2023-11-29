@@ -1,7 +1,7 @@
 # FIELDimagePy: Tutorial & Applications 
 
 <p align="center">
-  <img src="[https://github.com/SumantraChatterjee/FIELDImagePy_Images/Slide1.PNG](https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide1.PNG)" width="70%" height="70%">
+  <img src="[https://github.com/SumantraChatterjee/FIELDImagePy_Images/](https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/)Slide1.PNG" width="70%" height="70%">
 </p>
  
 FIELDimagePy is a computer program designed to extract information from a raster image bounded by a shapefile of multiple polygons. FIELDimagePy extracts information within each polygon of the shapefile. This program generates output quite similar to the program FIELDimageR. Although currently the default version of both FIELDimageR and FIELDimagePy programs have been designed to be applicable for agricultural fields separated by different plots, with some slight modifications both programs can be modified to be applicable to many other disciplines of science, such as geography, geophysics, geology, economics, medical research, etc. Other than the fact that FIELDimageR had been written in R-language and that FIELDimagePy has been written in Python-language, the two programs differ significantly in two other important aspects as well, such as  - (i) FIELDimagePy consumes significantly lesser computing time than FIELDimageR, and (ii) to reduce computing time, FIELDimageR aggregates several pixels into one larger pixel (and thus reduces the original resolution), whereas FIELDimagePy does not reduce the original image resolution. Thus, the benefit of FIELDimagePy is that it calculates based on high-resolution images, and at the same time consumes significantly less computing time. 
