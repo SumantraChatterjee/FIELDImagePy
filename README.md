@@ -28,7 +28,7 @@ FIELDimagePy is a computer program designed to extract information from a raster
 > The following libraries need to be installed. Please note that rasterio needs that gdal to be installed as a pre-requisite.
 
 <p align="center">
-  <img src="[[https://github.com/SumantraChatterjee/FIELDImagePy_Images/](https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main)](https://github.com/SumantraChatterjee/FIELDImagePy_Images/)Slide2.PNG">
+  <img src="[https://github.com/SumantraChatterjee/FIELDImagePy_Images/](https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main)](https://github.com/SumantraChatterjee/FIELDImagePy_Images/)](https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide1.PNG)](https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide1.PNG)Slide.PNG">
 </p>
 
 <br />
