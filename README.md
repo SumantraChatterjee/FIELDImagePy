@@ -43,9 +43,13 @@ FIELDimagePy is a computer program designed to extract information from a raster
   
 ## Step 2: 
 
-> Once all the aforementioned libraries have been installed, the following libraries and the associated packages needs to be installed. 
+> Once all the aforementioned libraries have been installed, the following libraries and the associated packages needs to be installed.
 
-## Step 3: 
+---------------------------------------------
+
+<div id="s2" />
+
+## Step 3: Clipping images according to region of interest (ROI)
 
 > Often images are acquired over a larger area than required. If the processes continued with the original images that would increase the computing times unnecessarily. Thus, the images are suggested to be clipped using an area of study. This area of study can be an outermost boundary of the multi-polygon shapefile defining the plots, or a separate shapefile of one polygon defining the region of interest. To implement this step – 
 The shapefile of importance is imported as:
@@ -61,6 +65,7 @@ Once the image is clipped according to the shapefile, the clipped image will be 
 
  
 Figure 2. Orhtomosicked images, before (top left) and after (bottom right) clipping with polygon of interest.
+
 Step 4: The next step is to import the raster image as a NumPy array and convert digital numbers to reflectance data. In the following two pictures, the first one represents importing a raster image and converting every raster band into NumPy arrays and the second one is converting digital numbers to reflectance. This example is set for a 16-bit image:
  
 Step 5: Calculating vegetation indices. Here example has been set for 15 vegetation indices calculations based on multispectral images. Any changes in vegetation indices calculations can be made by changing with any other vegetation indices, or RGB images, of interest:
