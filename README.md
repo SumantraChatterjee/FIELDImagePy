@@ -55,6 +55,9 @@ The shapefile of importance is imported as:
  
 Figure 1. Shapefile, defining the plot polygons. For this example, plot polygons of the study region have been used. However, any polygon of interest can be used at this stage.
 
+
+
+
 The image is imported as:
  
 
