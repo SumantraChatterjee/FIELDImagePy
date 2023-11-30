@@ -185,6 +185,7 @@ Thus, if the user uses any other vegetation index than NGRDI, that should replac
 ---------------------------------------------
 
 <div id="s2" />
+
 	
 ## Step 8: Calculating total numper of pixels per polygon 
 > To calculate the number of pixels within a polygon, the shapefile needs to be rasterized. This step can be done via the following step:
@@ -200,6 +201,7 @@ Thus, if the user uses any other vegetation index than NGRDI, that should replac
 ---------------------------------------------
 
 <div id="s2" />
+
 
 ## Step 9: The next step is extracting zonal statistics from vegetation index
 > The following example has been shown for normalized difference vegetation index (NDVI) only. However, this should be altered for any and all other vegetation indices wherever NDVI appears. These zonal statistics, and other, calculates mean, median, sum, and count (the number of non-null pixels within the polygon). For any other statistics, the changes should be made accordingly. The following program calculates the zonal statistics for all the polygons within the shapefile imported in Step 7, and saves the results in the geodatabase created in Step 7:
@@ -220,6 +222,7 @@ Thus, if the user uses any other vegetation index than NGRDI, that should replac
 
 ## Step 10: Combining all vegetation indices togather
 > Once all the above steps have been completed, all the zonal statistics for all the vegetation indices can be assembled together into one geodatabase using the following steps:
+
 
 <p align="center">
   <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide18.PNG"
