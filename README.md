@@ -179,6 +179,7 @@ At this stage the plot polygon shapefile needs to be imported as geopandas geoda
 <br /> 
 
 
+
 Step 8: To calculate the number of pixels within a polygon, the shapefile needs to be rasterized. This step can be done via the following step:
  
 
