@@ -242,7 +242,7 @@ Thus, if the user uses any other vegetation index than NGRDI, that should replac
 
 
 <p align="center">
-  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide19.PNG"
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide17.PNG"
 <br /> 
 
 
