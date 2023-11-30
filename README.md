@@ -150,6 +150,11 @@ Thus, if the user uses any other vegetation index than NGRDI, that should replac
 <br /> 
 
  
+ <p align="center">
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide13.PNG"
+<br /> 
+
+
 In the above figure, the original NDVI image (top left) and the NDVI image after clipping for soil exposed areas (bottom right). The white spots within the bottom right image shows the regions removed as exposed soil areas. 
 
 
