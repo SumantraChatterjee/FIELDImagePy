@@ -161,7 +161,7 @@ Thus, if the user uses any other vegetation index than NGRDI, that should replac
 <br /> 
 
 
-In the above figure, the original NDVI image (top left) and the NDVI image after clipping for soil exposed areas (bottom right). The white spots within the bottom right image shows the regions removed as exposed soil areas. 
+> In the above figure, the original NDVI image (top left) and the NDVI image after clipping for soil exposed areas (bottom right). The white spots within the bottom right image shows the regions removed as exposed soil areas. 
 
 
 <br />
@@ -171,7 +171,7 @@ In the above figure, the original NDVI image (top left) and the NDVI image after
 <div id="s2" />
 
 ## Step 7: Importing shapefiles and converting them into geodatabase
-At this stage the plot polygon shapefile needs to be imported as geopandas geodatabase. This is the geodatabase that would be filled with zonal statistics values. The shapefile can be imported as:
+> At this stage the plot polygon shapefile needs to be imported as geopandas geodatabase. This is the geodatabase that would be filled with zonal statistics values. The shapefile can be imported as:
  
 
 <p align="center">
@@ -187,7 +187,7 @@ At this stage the plot polygon shapefile needs to be imported as geopandas geoda
 <div id="s2" />
 	
 ## Step 8: Calculating total numper of pixels per polygon 
-To calculate the number of pixels within a polygon, the shapefile needs to be rasterized. This step can be done via the following step:
+> To calculate the number of pixels within a polygon, the shapefile needs to be rasterized. This step can be done via the following step:
 
 
 <p align="center">
@@ -200,13 +200,25 @@ To calculate the number of pixels within a polygon, the shapefile needs to be ra
 ---------------------------------------------
 
 <div id="s2" />
-Step 9: The next step is extracting zonal statistics from vegetation index. The following example has been shown for normalized difference vegetation index (NDVI) only. However, this should be altered for any and all other vegetation indices wherever NDVI appears. These zonal statistics, and other, calculates mean, median, sum, and count (the number of non-null pixels within the polygon). For any other statistics, the changes should be made accordingly. The following program calculates the zonal statistics for all the polygons within the shapefile imported in Step 7, and saves the results in the geodatabase created in Step 7:
+
+## Step 9: The next step is extracting zonal statistics from vegetation index
+> The following example has been shown for normalized difference vegetation index (NDVI) only. However, this should be altered for any and all other vegetation indices wherever NDVI appears. These zonal statistics, and other, calculates mean, median, sum, and count (the number of non-null pixels within the polygon). For any other statistics, the changes should be made accordingly. The following program calculates the zonal statistics for all the polygons within the shapefile imported in Step 7, and saves the results in the geodatabase created in Step 7:
+
  
+<p align="center">
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide16.PNG"
+<br /> 
+
 
  
 Figure 5. Geopandas geodatabase final database. The header “Count_SHP” represents total number of pixels within each polygons, “NDVI_count” represents the number of pixels with NDVI values after excluding the soil exposed areas. Thus, the ratio between NDVI_count to Count_SHP represents canopy coverage. As seen for NDVI, RENDVI, “mean” represents mean of the vegetation indices, and “median” represents median of the vegetation indices.
 
-Step 10: Once all the above steps have been completed, all the zonal statistics for all the vegetation indices can be assembled together into one geodatabase using the following steps:
+<br />
+
+---------------------------------------------
+
+<div id="s2" />
+	Step 10: Once all the above steps have been completed, all the zonal statistics for all the vegetation indices can be assembled together into one geodatabase using the following steps:
 
 
 Step 11: The final geodatabase can be exported as CSV file as follows:
