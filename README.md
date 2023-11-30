@@ -253,10 +253,21 @@ Thus, if the user uses any other vegetation index than NGRDI, that should replac
 <div id="s2" />
 
 	
-Step 12: The final geodatabase can be exported as CSV file as follows:
+## Step 12: The final geodatabase can be exported as CSV file as follows:
+
+
+<p align="center">
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide19.PNG"
+<br />
  
- 
-Figure 6. Example of the final exported CSV file
+
+
+
+<br />
+
+---------------------------------------------
+
+<div id="s2" />
 
 
 <div id="cont" />
