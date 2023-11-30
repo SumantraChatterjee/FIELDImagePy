@@ -138,6 +138,12 @@ The shapefile of importance is imported as:
 > The above image is showing NDVI calculated from the image. The bright regions represent healthy green vegetation.
 
 
+<br />
+
+---------------------------------------------
+
+<div id="s2" />
+
 
 ## Step 6: Classifying between soil and crop covers areas (optional step, depends on the aim of the study)
 > Crop soil separation can be made with any vegetation index of interest. Since, from this data, Normalized Green Red Difference Index (NGRDI) being greater or less than zero, can be used to precisely classify between soil and crop. Thus, this example is shown based on NGRDI being the vegetation index used to classify between soil and crop. The number -9999 has been given for “null” values. It can also be replaced by “np.NaN” also, which represents NumPy’s default number for nulls. The syntax is – 
@@ -158,9 +164,20 @@ Thus, if the user uses any other vegetation index than NGRDI, that should replac
 In the above figure, the original NDVI image (top left) and the NDVI image after clipping for soil exposed areas (bottom right). The white spots within the bottom right image shows the regions removed as exposed soil areas. 
 
 
+<br />
+
+---------------------------------------------
+
+<div id="s2" />
+
 ## Step 7: Importing shapefiles and converting them into geodatabase
 At this stage the plot polygon shapefile needs to be imported as geopandas geodatabase. This is the geodatabase that would be filled with zonal statistics values. The shapefile can be imported as:
  
+
+<p align="center">
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide14.PNG"
+<br /> 
+
 
 Step 8: To calculate the number of pixels within a polygon, the shapefile needs to be rasterized. This step can be done via the following step:
  
