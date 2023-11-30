@@ -210,18 +210,47 @@ Thus, if the user uses any other vegetation index than NGRDI, that should replac
 <br /> 
 
 
- 
-Figure 5. Geopandas geodatabase final database. The header “Count_SHP” represents total number of pixels within each polygons, “NDVI_count” represents the number of pixels with NDVI values after excluding the soil exposed areas. Thus, the ratio between NDVI_count to Count_SHP represents canopy coverage. As seen for NDVI, RENDVI, “mean” represents mean of the vegetation indices, and “median” represents median of the vegetation indices.
 
 <br />
 
 ---------------------------------------------
 
 <div id="s2" />
-	Step 10: Once all the above steps have been completed, all the zonal statistics for all the vegetation indices can be assembled together into one geodatabase using the following steps:
+	
+
+## Step 10: Combining all vegetation indices togather
+> Once all the above steps have been completed, all the zonal statistics for all the vegetation indices can be assembled together into one geodatabase using the following steps:
+
+<p align="center">
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide18.PNG"
+<br /> 
 
 
-Step 11: The final geodatabase can be exported as CSV file as follows:
+<br />
+
+---------------------------------------------
+
+<div id="s2" />
+	
+
+## Step 11: Final database
+ 
+>Figure below shows the geopandas geodatabase final database. The header “Count_SHP” represents total number of pixels within each polygons, “NDVI_count” represents the number of pixels with NDVI values after excluding the soil exposed areas. Thus, the ratio between NDVI_count to Count_SHP represents canopy coverage. As seen for NDVI, RENDVI, “mean” represents mean of the vegetation indices, and “median” represents median of the vegetation indices.
+
+
+<p align="center">
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide19.PNG"
+<br /> 
+
+
+<br />
+
+---------------------------------------------
+
+<div id="s2" />
+
+	
+Step 12: The final geodatabase can be exported as CSV file as follows:
  
  
 Figure 6. Example of the final exported CSV file
