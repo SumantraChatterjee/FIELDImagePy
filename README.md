@@ -67,7 +67,7 @@ The shapefile of importance is imported as:
   <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide3.PNG"
 <br /> 
 	
-Figure 1. Shapefile, defining the plot polygons. For this example, plot polygons of the study region have been used. However, any polygon of interest can be used at this stage.
+> Figure 1. Shapefile, defining the plot polygons. For this example, plot polygons of the study region have been used. However, any polygon of interest can be used at this stage.
 
 
 
@@ -78,7 +78,7 @@ Figure 1. Shapefile, defining the plot polygons. For this example, plot polygons
   <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide4.PNG"
 <br />  
 	
-Figure 2. Orhtomosicked images, before (top left) and after (bottom right) clipping with polygon of interest.
+> Figure 2. Orhtomosicked images, before (top left) and after (bottom right) clipping with polygon of interest.
 
 
 
@@ -92,13 +92,25 @@ Figure 2. Orhtomosicked images, before (top left) and after (bottom right) clipp
 
 
 ## Step 4: Importing image and converting ti NumPy arrays
-The next step is to import the raster image and convert it to a NumPy array, and convert digital numbers to reflectance data. In the following two pictures, the first one represents importing a raster image and converting every raster band into NumPy arrays and the second one is converting digital numbers to reflectance. This example is set for a 16-bit image:
- 
-Step 5: Calculating vegetation indices. Here example has been set for 15 vegetation indices calculations based on multispectral images. Any changes in vegetation indices calculations can be made by changing with any other vegetation indices, or RGB images, of interest:
- 
+> The next step is to import the raster image and convert it to a NumPy array, and convert digital numbers to reflectance data. In the following two pictures, the first one represents importing a raster image and converting every raster band into NumPy arrays and the second one is converting digital numbers to reflectance. This example is set for a 16-bit image:
 
- 
-Figure 3. The image showing NDVI calculated from the image. The bright regions represent healthy green vegetation.
+
+<br />
+
+---------------------------------------------
+
+<div id="s2" />
+
+## Step 5: Calculating vegetation indices. 
+>Here the example has been set for 15 vegetation indices calculations based on multispectral images. Any changes in vegetation indices calculations can be made by changing with any other vegetation indices, or RGB images, of interest:
+
+<p align="center">
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide5.PNG"
+<br />  
+	
+> Figure 3. The image showing NDVI calculated from the image. The bright regions represent healthy green vegetation.
+
+
 
 Step 6: Crop soil separation can be made with any vegetation index of interest. Since, from this data, Normalized Green Red Difference Index (NGRDI) being greater or less than zero, can be used to precisely classify between soil and crop. Thus, this example is shown based on NGRDI being the vegetation index used to classify between soil and crop. The number -9999 has been given for “null” values. It can also be replaced by “np.NaN” also, which represents NumPy’s default number for nulls. The syntax is – 
 VI of Interest = np.where(NGRDI > 0, VI of Interest, -9999)
