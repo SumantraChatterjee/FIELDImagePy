@@ -126,7 +126,7 @@ The shapefile of importance is imported as:
 
 
 <p align="center">
-  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide12.PNG"
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide10B.PNG"
 <br />  
 
 
