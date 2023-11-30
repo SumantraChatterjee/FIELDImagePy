@@ -252,7 +252,8 @@ Thus, if the user uses any other vegetation index than NGRDI, that should replac
 
 <div id="s2" />
 
-	
+
+ 
 ## Step 12: The final geodatabase can be exported as CSV file as follows:
 
 
@@ -268,6 +269,8 @@ Thus, if the user uses any other vegetation index than NGRDI, that should replac
 ---------------------------------------------
 
 <div id="s2" />
+
+
 
 
 <div id="cont" />
