@@ -74,13 +74,15 @@ The shapefile of importance is imported as:
 <p align="center">
   <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide5.PNG"
 <br />  
-	
+
+
 > Figure 1. Shapefile, defining the plot polygons. For this example, plot polygons of the study region have been used. However, any polygon of interest can be used at this stage.
 
 
 
 > Once the image is clipped according to the shapefile, the clipped image will be used further in the calculation. It is up to the user’s choice whether to save this clipped image at a permanent location or at a temporary location. The following section of the tutorial shows saving the temporary option:
  
+
 
 <p align="center">
   <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide6.PNG"
