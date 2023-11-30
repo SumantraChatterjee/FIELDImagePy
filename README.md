@@ -72,18 +72,20 @@ The shapefile of importance is imported as:
 <p align="center">
   <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide5.PNG"
 <br />  
+
 > Figure above shows the shapefile, defining the plot polygons. For this example, plot polygons of the study region have been used. However, any polygon of interest can be used at this stage.
 
 > The image is imported and clipped according to the shapefile as:
 <p align="center">
   <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide6.PNG"
 <br />  
+
 > Once the image is clipped according to the shapefile, the clipped image will be used further in the calculation. It is up to the user’s choice whether to save this clipped image at a permanent location or at a temporary location. The following section of the tutorial shows saving at the temporary location:
  <p align="center">
-  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide6.PNG"
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide7.PNG"
 <br />  
 <p align="center">
-  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide7.PNG"
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide8.PNG"
 <br />  
 	
 > The above figure shows the orhtomosicked images, before (top left) and after (bottom right) clipping with polygon of interest.
