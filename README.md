@@ -48,6 +48,7 @@ FIELDimagePy is a computer program designed to extract information from a raster
 ## Step 2: 
 
 > Once all the aforementioned libraries have been installed, the following libraries and the associated packages needs to be installed.
+
 <p align="center">
   <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide3.PNG"
 <br /> 
@@ -65,6 +66,7 @@ FIELDimagePy is a computer program designed to extract information from a raster
 
 > Often images are acquired over a larger area than required. If the processes continued with the original images that would increase the computing times unnecessarily. Thus, the images are suggested to be clipped using an area of study. This area of study can be an outermost boundary of the multi-polygon shapefile defining the plots, or a separate shapefile of one polygon defining the region of interest. To implement this step – 
 The shapefile of importance is imported as:
+
 <p align="center">
   <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide4.PNG"
 <br /> 
@@ -76,14 +78,17 @@ The shapefile of importance is imported as:
 > Figure above shows the shapefile, defining the plot polygons. For this example, plot polygons of the study region have been used. However, any polygon of interest can be used at this stage.
 
 > The image is imported and clipped according to the shapefile as:
+
 <p align="center">
   <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide6.PNG"
 <br />  
 
 > Once the image is clipped according to the shapefile, the clipped image will be used further in the calculation. It is up to the user’s choice whether to save this clipped image at a permanent location or at a temporary location. The following section of the tutorial shows saving at the temporary location:
+
  <p align="center">
   <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide7.PNG"
 <br />  
+	 
 <p align="center">
   <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide8.PNG"
 <br />  
