@@ -124,8 +124,9 @@ The shapefile of importance is imported as:
 ## Step 5: Calculating vegetation indices. 
 >Here the example has been set for 15 vegetation indices calculations based on multispectral images. Any changes in vegetation indices calculations can be made by changing with any other vegetation indices, or RGB images, of interest:
 
+
 <p align="center">
-  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide10.PNG"
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide11.PNG"
 <br />  
 
 
