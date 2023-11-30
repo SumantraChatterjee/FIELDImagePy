@@ -45,7 +45,7 @@ FIELDimagePy is a computer program designed to extract information from a raster
 
 
 
-## Step 2: 
+## Step 2: Installing libraries
 
 > Once all the aforementioned libraries have been installed, the following libraries and the associated packages needs to be installed.
 
@@ -106,15 +106,19 @@ The shapefile of importance is imported as:
 	
 
 
-## Step 4: Importing image and converting ti NumPy arrays
+## Step 4: Importing multiband raster image and converting each band into separate NumPy arrays
 > The next step is to import the raster image and convert it to a NumPy array, and convert digital numbers to reflectance data. In the following two pictures, the first one represents importing a raster image and converting every raster band into NumPy arrays and the second one is converting digital numbers to reflectance. This example is set for a 16-bit image:
 
+<p align="center">
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide9.PNG"
+<br />  
 
 <br />
 
 ---------------------------------------------
 
 <div id="s2" />
+
 
 ## Step 5: Calculating vegetation indices. 
 >Here the example has been set for 15 vegetation indices calculations based on multispectral images. Any changes in vegetation indices calculations can be made by changing with any other vegetation indices, or RGB images, of interest:
