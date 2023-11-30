@@ -131,7 +131,7 @@ The shapefile of importance is imported as:
 	
 
 <p align="center">
-  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide11.PNG"
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide12.PNG"
 <br /> 
 
 > The above image is showing NDVI calculated from the image. The bright regions represent healthy green vegetation.
