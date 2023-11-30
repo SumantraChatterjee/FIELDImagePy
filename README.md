@@ -70,6 +70,10 @@ The shapefile of importance is imported as:
 <p align="center">
   <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide4.PNG"
 <br /> 
+
+<p align="center">
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide5.PNG"
+<br />  
 	
 > Figure 1. Shapefile, defining the plot polygons. For this example, plot polygons of the study region have been used. However, any polygon of interest can be used at this stage.
 
