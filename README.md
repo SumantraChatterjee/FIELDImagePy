@@ -52,22 +52,23 @@ FIELDimagePy is a computer program designed to extract information from a raster
 > Often images are acquired over a larger area than required. If the processes continued with the original images that would increase the computing times unnecessarily. Thus, the images are suggested to be clipped using an area of study. This area of study can be an outermost boundary of the multi-polygon shapefile defining the plots, or a separate shapefile of one polygon defining the region of interest. To implement this step – 
 The shapefile of importance is imported as:
  
- 
+<p align="center">
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide3.PNG"
+<br /> 
 Figure 1. Shapefile, defining the plot polygons. For this example, plot polygons of the study region have been used. However, any polygon of interest can be used at this stage.
 
 
-
-
-The image is imported as:
+> Once the image is clipped according to the shapefile, the clipped image will be used further in the calculation. It is up to the user’s choice whether to save this clipped image at a permanent location or at a temporary location. The following section of the tutorial shows saving the temporary option:
  
 
-Once the image is clipped according to the shapefile, the clipped image will be used further in the calculation. It is up to the user’s choice whether to save this clipped image at a permanent location or at a temporary location. The following section of the tutorial shows saving the temporary option:
- 
-
- 
+<p align="center">
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide4.PNG"
+<br />  
 Figure 2. Orhtomosicked images, before (top left) and after (bottom right) clipping with polygon of interest.
 
-Step 4: The next step is to import the raster image as a NumPy array and convert digital numbers to reflectance data. In the following two pictures, the first one represents importing a raster image and converting every raster band into NumPy arrays and the second one is converting digital numbers to reflectance. This example is set for a 16-bit image:
+
+## Step 4: Importing image and converting ti NumPy arrays
+The next step is to import the raster image and convert it to a NumPy array, and convert digital numbers to reflectance data. In the following two pictures, the first one represents importing a raster image and converting every raster band into NumPy arrays and the second one is converting digital numbers to reflectance. This example is set for a 16-bit image:
  
 Step 5: Calculating vegetation indices. Here example has been set for 15 vegetation indices calculations based on multispectral images. Any changes in vegetation indices calculations can be made by changing with any other vegetation indices, or RGB images, of interest:
  
