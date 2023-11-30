@@ -281,6 +281,7 @@ Thus, if the user uses any other vegetation index than NGRDI, that should replac
 
 > * [Sumantra Chatterjee](https://www.linkedin.com/in/sumantra-chatterjee-01a3154b/)
 > * [Seth Murray](https://soilcrop.tamu.edu/people/murray-seth-c/)
+> * [Filipe Matias](https://www.linkedin.com/in/filipe-matias-27bab5199/)
 
 <br />
 
