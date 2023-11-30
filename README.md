@@ -49,6 +49,10 @@ FIELDimagePy is a computer program designed to extract information from a raster
 
 > Once all the aforementioned libraries have been installed, the following libraries and the associated packages needs to be installed.
 
+<p align="center">
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide3.PNG"
+<br /> 
+
 <br />
 
 ---------------------------------------------
@@ -64,7 +68,7 @@ FIELDimagePy is a computer program designed to extract information from a raster
 The shapefile of importance is imported as:
  
 <p align="center">
-  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide3.PNG"
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide4.PNG"
 <br /> 
 	
 > Figure 1. Shapefile, defining the plot polygons. For this example, plot polygons of the study region have been used. However, any polygon of interest can be used at this stage.
@@ -75,7 +79,7 @@ The shapefile of importance is imported as:
  
 
 <p align="center">
-  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide4.PNG"
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide5.PNG"
 <br />  
 	
 > Figure 2. Orhtomosicked images, before (top left) and after (bottom right) clipping with polygon of interest.
