@@ -125,14 +125,15 @@ The shapefile of importance is imported as:
 >Here the example has been set for 15 vegetation indices calculations based on multispectral images. Any changes in vegetation indices calculations can be made by changing with any other vegetation indices, or RGB images, of interest:
 
 <p align="center">
-  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide5.PNG"
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide10.PNG"
 <br />  
 	
-> Figure 3. The image showing NDVI calculated from the image. The bright regions represent healthy green vegetation.
+> The above image is showing NDVI calculated from the image. The bright regions represent healthy green vegetation.
 
 
 
-Step 6: Crop soil separation can be made with any vegetation index of interest. Since, from this data, Normalized Green Red Difference Index (NGRDI) being greater or less than zero, can be used to precisely classify between soil and crop. Thus, this example is shown based on NGRDI being the vegetation index used to classify between soil and crop. The number -9999 has been given for “null” values. It can also be replaced by “np.NaN” also, which represents NumPy’s default number for nulls. The syntax is – 
+## Step 6: Classifying between soil and crop covers areas (optional step, depends on the aim of the study)
+> Crop soil separation can be made with any vegetation index of interest. Since, from this data, Normalized Green Red Difference Index (NGRDI) being greater or less than zero, can be used to precisely classify between soil and crop. Thus, this example is shown based on NGRDI being the vegetation index used to classify between soil and crop. The number -9999 has been given for “null” values. It can also be replaced by “np.NaN” also, which represents NumPy’s default number for nulls. The syntax is – 
 VI of Interest = np.where(NGRDI > 0, VI of Interest, -9999)
 Thus, if the user uses any other vegetation index than NGRDI, that should replace the NGRDI in above syntax or the equations below:
  
