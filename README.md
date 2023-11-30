@@ -180,9 +180,26 @@ At this stage the plot polygon shapefile needs to be imported as geopandas geoda
 
 
 
-Step 8: To calculate the number of pixels within a polygon, the shapefile needs to be rasterized. This step can be done via the following step:
+<br />
+
+---------------------------------------------
+
+<div id="s2" />
+	
+## Step 8: Calculating total numper of pixels per polygon 
+To calculate the number of pixels within a polygon, the shapefile needs to be rasterized. This step can be done via the following step:
+
+
+<p align="center">
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide15.PNG"
+<br /> 
  
 
+<br />
+
+---------------------------------------------
+
+<div id="s2" />
 Step 9: The next step is extracting zonal statistics from vegetation index. The following example has been shown for normalized difference vegetation index (NDVI) only. However, this should be altered for any and all other vegetation indices wherever NDVI appears. These zonal statistics, and other, calculates mean, median, sum, and count (the number of non-null pixels within the polygon). For any other statistics, the changes should be made accordingly. The following program calculates the zonal statistics for all the polygons within the shapefile imported in Step 7, and saves the results in the geodatabase created in Step 7:
  
 
