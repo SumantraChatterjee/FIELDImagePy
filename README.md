@@ -85,6 +85,10 @@ The shapefile of importance is imported as:
 <p align="center">
   <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide6.PNG"
 <br />  
+
+<p align="center">
+  <img src="https://github.com/SumantraChatterjee/FIELDImagePy_Images/blob/main/Slide7.PNG"
+<br />  
 	
 > Figure 2. Orhtomosicked images, before (top left) and after (bottom right) clipping with polygon of interest.
 
