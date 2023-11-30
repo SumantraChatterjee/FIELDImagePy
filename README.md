@@ -23,6 +23,9 @@ FIELDimagePy is a computer program designed to extract information from a raster
 
 <div id="s1" />
 
+
+
+
 ## Step 1: Intall libraries
 
 > The following libraries need to be installed. Please note that rasterio needs that gdal to be installed as a pre-requisite.
@@ -39,13 +42,21 @@ FIELDimagePy is a computer program designed to extract information from a raster
 
 <div id="s2" />
   
+
+
+
 ## Step 2: 
 
 > Once all the aforementioned libraries have been installed, the following libraries and the associated packages needs to be installed.
 
+<br />
+
 ---------------------------------------------
 
 <div id="s2" />
+
+
+
 
 ## Step 3: Clipping images according to region of interest (ROI)
 
@@ -59,6 +70,7 @@ The shapefile of importance is imported as:
 Figure 1. Shapefile, defining the plot polygons. For this example, plot polygons of the study region have been used. However, any polygon of interest can be used at this stage.
 
 
+
 > Once the image is clipped according to the shapefile, the clipped image will be used further in the calculation. It is up to the user’s choice whether to save this clipped image at a permanent location or at a temporary location. The following section of the tutorial shows saving the temporary option:
  
 
@@ -67,6 +79,16 @@ Figure 1. Shapefile, defining the plot polygons. For this example, plot polygons
 <br />  
 	
 Figure 2. Orhtomosicked images, before (top left) and after (bottom right) clipping with polygon of interest.
+
+
+
+
+<br />
+
+---------------------------------------------
+
+<div id="s2" />
+	
 
 
 ## Step 4: Importing image and converting ti NumPy arrays
