@@ -1,0 +1,313 @@
+"""Package initialization file."""
+import fiona
+import geopandas as gpd
+import numpy as np
+import pandas as pd
+import rasterio
+import rasterio.mask
+import skimage
+from dataclasses import dataclass
+from matplotlib import pyplot as plt
+from mpl_toolkits.axes_grid1 import ImageGrid
+from rasterio import features
+from rasterstats import zonal_stats
+
+
+@dataclass
+class MULTISPECTRAL:
+    """Multispectral orthomosaic image."""
+    blue: np.ndarray
+    green: np.ndarray
+    red: np.ndarray
+    nir: np.ndarray
+    rededge: np.ndarray
+
+
+class VI(np.ndarray):
+    """Subclass of np.ndarray for vegetative indices."""
+    # From NumPy documentation
+    def __new__(cls, input_array: np.ndarray, index: str):
+        obj = np.asarray(input_array).view(cls)
+        # New attribute index stores vegetative index name
+        obj.index = index
+        return obj
+
+    def __array_finalize__(self, obj):
+        if obj is not None:
+            self.index = getattr(obj, "index", None)
+
+    def __getitem__(self, key):
+        # Enhance the np.ndarray __getitem__ method
+        # Slice the array as requested but return an array of the same class
+        # Idea from NumPy examples of subclassing:
+        return super(VI, self).__getitem__(key)
+
+    def show(self):
+        # Display the vegetative index
+        plt.figure()
+        plt.imshow(skimage.util.img_as_ubyte(self))
+        plt.show()
+
+
+def read_and_clip_orthophoto(imgfile, shapefile):
+    """Reads a multispectral TIF and clips to the field shape.
+
+    Inputs
+    ------
+    imgfile   = TIF image filepath.
+    shapefile = Field area shape file.
+
+    Returns
+    -------
+    msi       = Multispectral orthomosaic (MULTISPECTRAL).
+    """
+    # Importing plot shapefile for clipping the imahe
+    # The original image used in this program spanned over a larger region than the plot area
+    # (which is quite common in most cases)
+    # This could increase computing time
+    # So the plot shapefiles are being brought here to clip the image according to plot areas
+
+    with fiona.open(shapefile, "r") as shp:
+        shapes = [feature["geometry"] for feature in shp]
+
+    # Clipping the image by plot area
+    # Importing original image, the one to be clipped
+    nodata = 0
+    with rasterio.open(imgfile, 'r') as src:
+        out_image, out_transform = rasterio.mask.mask(src, shapes, nodata, crop=True)
+        out_meta = src.meta
+
+    # Importing shapefile geometry for clipping the image
+    out_meta.update({"driver": "GTiff",
+                     "height": out_image.shape[1],
+                     "width": out_image.shape[2],
+                     "transform": out_transform})
+
+    # Exporting clipped image
+    # This step is optional, but recommended to cross check whether clipping has been performed properly
+    # Clipped filename
+    clipped = f"{imgfile[:-4]}_clipped.tif"
+    with rasterio.open(clipped, "w", **out_meta) as raster:
+        # If no filepath is added this way, the image would be saved in compiler's (Jupyter Notebook, Spyder, etc.) memory
+        # If ony one name is used, the image will be replaced by the same name every time the image is changed
+        raster.write(out_image)
+
+    # Importing the clipped image
+    with rasterio.open(clipped, 'r') as raster2:
+        msi = MULTISPECTRAL(blue=raster2.read(1),
+                            green=raster2.read(2),
+                            red=raster2.read(3),
+                            nir=raster2.read(4),
+                            rededge=raster2.read(5))
+
+    # Converting digital numbers (DN) to reflectance
+    # This step is quite important and highly recommended, unless already have been done while image processing
+    # Images convertd to reflectance values should range between 0 - 1 or 0 - 100%
+    # The equation for conversion is ((DN/(2^n)) - 1), where n is the bit size of the camera
+    # Digital cameras generally store imaes as 8 bit or 16 bit
+    # For this example n = 16, and thus ((DN/(2^16)) - 1) = 65535
+    msi.blue = (msi.blue / 65535).astype(float)
+    msi.green = (msi.green / 65535).astype(float)
+    msi.red = (msi.red / 65535).astype(float)
+    msi.nir = (msi.nir / 65535).astype(float)
+    msi.rededge = (msi.rededge / 65535).astype(float)
+
+    # Plot the clipped image for visualization purposes
+    plt.figure()
+    plt.imshow(skimage.util.img_as_ubyte(np.dstack([msi.red, msi.green, msi.blue])))
+    plt.show()
+
+    return msi
+
+
+def import_plot_shapefile(imgfile, shapefile):
+    """Import plot shapefile and rasterize it.
+
+    Parameters
+    ----------
+    imgfile : str
+        Clipped orthomosaic image file.
+    shapefile : str
+        Path to shapefile.
+
+    Returns
+    -------
+    plot_counts : pandas.core.frame.DataFrame
+        Plot pixel counts.
+    crop_gdf : pandas.core.frame.DataFrame
+        Plot geodataframe.
+    affine : affine.Affine
+        Orthomosaic affine transformation.
+    """
+    # Import shapefile for calculation
+    # Shapefile of the plot area
+    crop_gdf = gpd.read_file(shapefile)
+
+    # Get list of geometries for all features in vector file
+    # This will greate a geodatabase with each plot ID
+    geom = [shapes for shapes in crop_gdf.geometry]
+
+    # Rasterize vector using the shape and coordinate system of the raster
+    # This ste is required to count the total number of pixels per polygon
+    raster = rasterio.open(imgfile, 'r')
+    rasterized = features.rasterize(geom,
+                                    out_shape=raster.shape,
+                                    fill=0,
+                                    out=None,
+                                    transform=raster.transform,
+                                    all_touched=False,
+                                    default_value=1,
+                                    dtype=None)
+
+    # Accessing the transform information from the original raster
+    affine = raster.transform
+
+    # Counting the number of pixels per plot
+    rasterized_mean = zonal_stats(crop_gdf,
+                                  rasterized,
+                                  affine=affine,
+                                  geojson_out=True,
+                                  stats=['count'],
+                                  nodata=-9999)
+    crop_poly_rasterized_data = []
+    for mean in rasterized_mean:
+        crop_poly_rasterized_data.append(mean["properties"])
+
+    avg_rasterized_indices = pd.DataFrame(crop_poly_rasterized_data)
+    avg_rasterized_indices.rename({'id': 'ID', 'count': 'Count_SHP'}, axis=1, inplace=True)
+    plot_counts = avg_rasterized_indices[["ID", "Count_SHP"]]
+
+    return plot_counts, crop_gdf, affine
+
+
+def calculate_vi(msi, index):
+    """Calculates vegetation index.
+
+    Parameters
+    ----------
+    msi : MULTISPECTRAL
+        Multispectral orthomosaic image.
+    index : str
+        Name of vegetation index.
+
+    Returns
+    -------
+    index_final : VI
+        Vegetation index image.
+    """
+    # Dealing with the situations division by zero
+    np.seterr(divide='ignore', invalid='ignore')
+
+    # Calculating vegetation indices
+    # This example shows with 15 vegetation indices
+    # Any number of vegetation indices can be used
+    indices = {
+        "RED": "msi.red",
+        "GREEN": "msi.green",
+        "BLUE": "msi.blue",
+        "NIR": "msi.nir",
+        "REDEDGE": "msi.rededge",
+        "NDVI": "(msi.nir - msi.red) / (msi.nir + msi.red)",
+        "RENDVI": "(msi.rededge - msi.red) / (msi.rededge + msi.red)",
+        "GNDVI": "(msi.nir - msi.green) / (msi.nir + msi.green)",
+        "ENDVI": "(msi.nir + msi.green - 2*msi.blue) / (msi.nir + msi.green + 2*msi.blue)",
+        "NDRE": "(msi.nir - msi.rededge) / (msi.nir + msi.rededge)",
+        "NNIR": "msi.nir / (msi.nir + (msi.rededge + msi.green))",
+        "MCARI": "(msi.rededge - msi.red) - 2*(msi.rededge - msi.green) * (msi.rededge / msi.red)",
+        "SIPI": "(msi.nir - msi.blue) / (msi.nir + msi.red)",
+        "NGRDI": "((msi.green) - (msi.red)) / ((msi.green) + (msi.red))",
+        "NLI": "((msi.nir**2) - msi.red) / ((msi.nir**2) + msi.red)",
+        "SR": "msi.nir / msi.red",
+        "DVI": "msi.nir - msi.red",
+        "RDVI": "(msi.nir - msi.red) / ((msi.nir + msi.red)**(1/2))",
+        "MDD": "(msi.nir - msi.rededge) - (msi.rededge - msi.green)",
+        "MARI": "((1 / msi.green) - (1 / msi.red)) * msi.nir",
+        "HUE": "np.arctan((2 * (msi.red - msi.green - msi.blue)) / (30.5 * (msi.green - msi.blue)))"
+    }
+
+    # Making original calculation
+    # Later on adjustments can be made to remove soil, or normallizing the vegetation indices, etc.
+    index_calc = eval(indices[index.upper()])
+
+    # FINAL VEGETATION INDICES CALCULATION
+
+    # Separating crop and soil fractions based on NGRDI
+    # This step is ontional and based on the need of the research
+    # For this example NGRDI has been used to classify between soil and crop
+    # Any vegetation indices can be used (VI_For_Classification)
+    # basic syntax is:
+    # VI = np.wnere(VI_For_Classification (symbol(s): > or < or = or !=) (classification criteria), VI_Of_Interest, np.nan)
+    # np.nan is the number for null values
+    index_final = np.where(index_calc > 0, index_calc, np.nan)
+    # Convert to VI class
+    index_final = VI(index_final, index)
+
+    return index_final
+
+
+def vi_stats(index_img, index, crop_gdf, affine):
+    """Calculates statistics for vegetation index.
+
+    Parameters
+    ----------
+    index_img : VI
+        Vegetation index image.
+    index : str
+        Name of vegetation index.
+    crop_gdf : pandas.core.frame.DataFrame
+        Plot geodataframe.
+    affine : affine.Affine
+        Orthomosaic affine transformation.
+
+    Returns
+    -------
+    stats : pandas.core.frame.DataFrame
+        Vegetation index statistics.
+    """
+    # Extract index per plot
+    index_mean = zonal_stats(crop_gdf, index_img, affine=affine, geojson_out=True,
+                             stats=['mean', 'median', 'sum', 'count'], nodata=np.nan)
+    plot_vi_data = []
+    for mean in index_mean:
+        plot_vi_data.append(mean["properties"])
+    avg_indices = pd.DataFrame(plot_vi_data)
+    avg_indices.rename({'id': 'ID', 'mean': f'{index}_mean', 'median': f'{index}_median',
+                        'sum': f'{index}_sum', 'count': f'{index}_count'}, axis=1, inplace=True)
+    stats = avg_indices[[f"{index}_mean", f"{index}_median", f"{index}_sum", f"{index}_count"]]
+
+    return stats
+
+
+def calc_all_vi(msi, crop_gdf, affine, plot_counts):
+    """Calculates all vegetation indices and statistics.
+
+    Parameters
+    ----------
+    msi : MULTISPECTRAL
+        Multispectral orthomosaic image.
+    crop_gdf : pandas.core.frame.DataFrame
+        Plot geodataframe.
+    affine : affine.Affine
+        Orthomosaic affine transformation.
+    plot_counts : pandas.core.frame.DataFrame
+        Plot pixel counts.
+
+    Returns
+    -------
+    vi_df : pandas.core.frame.DataFrame
+        Vegetation index statistics.
+    """
+    vis = ["RED", "GREEN", "BLUE", "NIR", "REDEDGE", "NDVI", "RENDVI", "GNDVI", "ENDVI", "NDRE", "NNIR",
+           "MCARI", "SIPI", "NGRDI", "NLI", "SR", "DVI", "RDVI", "MDD", "MARI", "HUE"]
+    stats = [plot_counts]
+    fig = plt.figure(figsize=(10, 5))
+    grid = ImageGrid(fig, 111, nrows_ncols=(3, 7), axes_pad=0.25)
+    for ax, vi in zip(grid, vis):
+        index = calculate_vi(msi, vi)
+        stats.append(vi_stats(index_img=index, index=vi, crop_gdf=crop_gdf, affine=affine))
+        ax.imshow(skimage.util.img_as_ubyte(index))
+        ax.set_title(vi)
+    plt.show()
+    vi_df = pd.concat(stats, axis=1)
+
+    return vi_df
